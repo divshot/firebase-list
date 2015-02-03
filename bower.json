@@ -1,10 +1,10 @@
 {
   "name": "firebase-list",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "keywords": [
-    "seed",
     "polymer",
-    "web-components"
+    "web-components",
+    "firebase"
   ],
   "main": "firebase-list.html",
   "dependencies": {

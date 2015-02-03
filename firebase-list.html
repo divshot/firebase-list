@@ -1,7 +1,7 @@
 <link rel="import" href="../firebase-element/firebase-element.html">
 <!--
 
-Extends `firebase-element` with behaviors for treating a given location as an
+Extends [firebase-element](https://github.com/polymer/firebase-element) with behaviors for treating a given location as an
 ordered list of data.
 
 Lists in Firebase are stored the same as ordinary objects. With `firebase-list`
@@ -38,14 +38,12 @@ you want to remove as an argument:
       this.$.base.remove(item.$key);
     }
 
-**Note:** Because you can use this in conjunction with filtering, limiting, and
+***Note:** Because you can use this in conjunction with filtering, limiting, and
 sorting attributes, it is possible that you may push or remove entries that are
 not currently represented in the data.
 
 @class firebase-list
 @blurb Extends firebase-element to handle list data in Firebase.
-@status alpha
-@snap snap.png
 
 -->
 <polymer-element name="firebase-list" extends="firebase-element" attributes="reverse">
