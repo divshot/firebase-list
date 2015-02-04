@@ -28,6 +28,7 @@
     <button id="add" onclick="addItem()">Add Item</button>
     <button id="randomize" onclick="randomize()">Randomize Priorities</button>
     <button id="reverse" onclick="toggleReverse()">Reverse Order</button>
+    <button id="readonly" onclick="toggleReadonly()">Make Read Only</button>
   </p>
   <script>
     var items = ['Apples', 'Bananas', 'Cherries', 'Dates', 'Eggs', 'Flour', 'Granola', 'Ham', 'Ice Cream', 'Jelly', 'Kumquats', 'Lollipops', 'Mint', 'Nectarines', 'Oranges', 'Pears', 'Quinoa', 'Rutabega', 'Soda', 'Tarts'];
@@ -54,6 +55,13 @@
     function toggleReverse() {
       var base = document.getElementById('base');
       base.reverse = !base.reverse;
+    }
+
+    function toggleReadonly(e) {
+      var base = document.getElementById('base');
+      base.readonly = !base.readonly
+      if (base.readonly) e.currentTarget.innerText = "Make Read/Write";
+      else e.currentTarget.innerText = "Make Read Only";
     }
 
     function prioritize(el) {

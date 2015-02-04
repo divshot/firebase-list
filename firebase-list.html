@@ -46,7 +46,7 @@ not currently represented in the data.
 @blurb Extends firebase-element to handle list data in Firebase.
 
 -->
-<polymer-element name="firebase-list" extends="firebase-element" attributes="reverse">
+<polymer-element name="firebase-list" extends="firebase-element" attributes="reverse readonly">
   <script>
     Polymer({
       /**
@@ -58,7 +58,16 @@ not currently represented in the data.
        * @default false
        */
       reverse: false,
-
+      /**
+       * When set, the array will not be observed for changes with automatic
+       * persistence. This can be a performance benefit for large datasets as
+       * well as a sometimes desired feature.
+       *
+       * @attribute readonly
+       * @type Boolean
+       * @default false
+       */
+      readonly: false,
       created: function() {
         this.data = [];
         this.observers = {};
@@ -70,7 +79,15 @@ not currently represented in the data.
       dataChanged: function() {
         return;
       },
+      readonlyChanged: function() {
+        if (this.readonly) {
+          this.closeObserver();
+        } else {
+          this.observeData();
+        }
+      },
       observeData: function() {
+        if (this.readonly) return;
         for (var i = 0; i < this.data.length; i++) {
           if (this.data[i].$key && !this.observers[this.data[i].$key]) {
             this.openChildObserver(this.data[i]);
